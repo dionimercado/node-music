@@ -1,0 +1,48 @@
+
+<section class="jumbotron text-center">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6 mx-auto mb-5">
+        <img class="img-fluid" data-src="holder.js/300px300?theme=thumb&bg=55595c&fg=eceeef&text=Album Cover" alt="{{albumName}}">
+      </div>
+    </div>
+
+    <h1 class="jumbotron-heading">{{albumName}}</h1>
+    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
+    <p>
+      <a href="#" class="btn btn-primary my-2">Main call to action</a>
+      <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Track</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Genre</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{tracks.SequelizeInstance}}
+          {{# each tracks}}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{Track}}</td>
+            <td>{{Artist}}</td>
+            <td>{{Genre}}</td>
+            <td>{{Price}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,9 @@ const express     = require('express'),
       bodyParser  = require('body-parser'),
       logger      = require('morgan'),
       exphbs      = require('express-handlebars'),
-      Sequelize   = require('sequelize');
+      Sequelize   = require('sequelize'),
+      Playlists       = require('./routes/playlists'),
+      Albums       = require('./routes/albums');
       
 
 const app = express();
@@ -18,6 +20,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.get('/', (req, res) => {
   res.render('home');
 });
+
+Albums(app);
+Playlists(app);
+
+
 
 app.listen(process.env.PORT, () => {
   console.log(`Server running...`);
