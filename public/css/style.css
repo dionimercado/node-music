@@ -14,3 +14,9 @@ h1 {
 .jumbotron {
   background-color: #fff;
 }
+.album-cover,
+.artist-cover{
+  width: 100% !important; 
+  height: auto !important; 
+  display: inline-block !important;
+}

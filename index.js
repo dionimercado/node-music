@@ -4,8 +4,9 @@ const express     = require('express'),
       logger      = require('morgan'),
       exphbs      = require('express-handlebars'),
       Sequelize   = require('sequelize'),
-      Playlists       = require('./routes/playlists'),
-      Albums       = require('./routes/albums');
+      Playlists   = require('./routes/playlists'),
+      Artists     = require('./routes/artists'),
+      Albums      = require('./routes/albums');
       
 
 const app = express();
@@ -23,6 +24,7 @@ app.get('/', (req, res) => {
 
 Albums(app);
 Playlists(app);
+Artists(app);
 
 
 

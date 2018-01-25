@@ -8,6 +8,7 @@ module.exports = app => {
       INNER JOIN Track USING(AlbumId)
       INNER JOIN Artist ar USING(ArtistId)
       GROUP BY AlbumId
+      ORDER BY RANDOM()
       LIMIT 15
     `, 
     {model: Album, raw: true})

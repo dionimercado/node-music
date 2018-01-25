@@ -4,16 +4,12 @@
 
     <div class="row">
       <div class="col-md-6 mx-auto mb-5">
-        <img class="img-fluid album-cover" src="holder.js/300px300?theme=thumb&bg=55595c&fg=eceeef&text=Album Cover" alt="{{albumName}}">
+        <img class="img-fluid artist-cover" src="holder.js/300px300?theme=thumb&bg=55595c&fg=eceeef&text=No Photo" alt="{{ArtistName}}">
       </div>
     </div>
 
-    <h1 class="jumbotron-heading">{{albumName}}</h1>
-    <p class="lead text-muted">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
-    <h3>20% OFF</h3>
-    <p>
-      <a href="#" class="btn btn-success my-2 buy-album">BUY ALBUM $<span></span></a>
-    </p>
+    <h1 class="jumbotron-heading">{{ArtistName}}</h1>
+    <p class="lead text-muted biography" data-artist="{{ArtistName}}">Something short and leading about the collection below—its contents, the creator, etc. Make it short and sweet, but not too short so folks don't simply skip over it entirely.</p>
   </div>
 </section>
 
@@ -25,7 +21,7 @@
           <tr>
             <th scope="col">#</th>
             <th scope="col">Track</th>
-            <th scope="col">Artist</th>
+            <th scope="col">Album</th>
             <th scope="col">Genre</th>
             <th scope="col">Price</th>
           </tr>
@@ -36,7 +32,7 @@
           <tr>
             <th scope="row">1</th>
             <td>{{Track}}</td>
-            <td>{{Artist}}</td>
+            <td>{{Album}}</td>
             <td>{{Genre}}</td>
             <td scope="price">{{Price}}</td>
           </tr>
