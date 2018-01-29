@@ -1,0 +1,27 @@
+
+<div class="bg-light py-5">
+  <form class="form-signin py-5" action="/signin" method="POST">
+    <div class="signup-header mb-5">
+      <h1 class="text-center mb-3">Sign in to your account</h1>
+      <p style="text-align: center;">Thank you for using our service. Please enter your credentials.</p>
+      <p style="text-align: center;"><strong>Not a member yet?</strong><a href="/signup/"> Sign up for free!</a></p>
+    </div>
+
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
+
+    <label for="inputEmail" class="sr-only">Email address</label>
+    <input type="email" name="username" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+  </form>
+</div>

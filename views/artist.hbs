@@ -3,8 +3,8 @@
   <div class="container">
 
     <div class="row">
-      <div class="col-md-6 mx-auto mb-5">
-        <img class="img-fluid artist-cover" src="holder.js/300px300?theme=thumb&bg=55595c&fg=eceeef&text=No Photo" alt="{{ArtistName}}">
+      <div class="col-md-4 mx-auto mb-5">
+        <img class="img-fluid single-cover artist-cover" src="https://via.placeholder.com/348x225/54595b/ffffff/?text=Thumbnail" alt="{{ArtistName}}">
       </div>
     </div>
 
@@ -19,10 +19,10 @@
       <table class="table">
         <thead class="thead-dark">
           <tr>
-            <th scope="col">#</th>
+            <th class="d-none d-md-table-cell" scope="col">#</th>
             <th scope="col">Track</th>
-            <th scope="col">Album</th>
-            <th scope="col">Genre</th>
+            <th class="d-none d-md-table-cell" scope="col">Album</th>
+            <th class="d-none d-md-table-cell" scope="col">Genre</th>
             <th scope="col">Price</th>
           </tr>
         </thead>
@@ -30,15 +30,23 @@
           {{tracks.SequelizeInstance}}
           {{# each tracks}}
           <tr>
-            <th scope="row">1</th>
+            <th class="d-none d-md-table-cell" scope="row">1</th>
             <td>{{Track}}</td>
-            <td>{{Album}}</td>
-            <td>{{Genre}}</td>
+            <td class="d-none d-md-table-cell">{{Album}}</td>
+            <td class="d-none d-md-table-cell">{{Genre}}</td>
             <td scope="price">{{Price}}</td>
           </tr>
           {{/each}}
         </tbody>
       </table>
     </div>
+  </div>
+</div>
+
+
+<div class="album p-3 p-md-5 bg-light">
+  <div class="container-fluid">
+
+    <div class="row artist-albums mx-auto text-center"></div>
   </div>
 </div>

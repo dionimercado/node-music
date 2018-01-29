@@ -16,7 +16,7 @@ module.exports = app => {
       //   console.log(results.toJSON);
       // });
       .then(artists => {
-        res.render('artists', {artists});
+        res.render('artists', { artists, isLoggedIn: req.isAuthenticated() });
         console.log(artists);
       });
   });
@@ -33,7 +33,7 @@ module.exports = app => {
     
     sequelize.query(SQL, {model: Artist, raw: true})
       .then(tracks => {
-        res.render('artist', {tracks, ArtistName: tracks[0].Artist, title: tracks[0].Artist}); 
+        res.render('artist', {tracks, ArtistName: tracks[0].Artist, title: tracks[0].Artist, isLoggedIn: req.isAuthenticated()}); 
         // res.render('artist', {tracks}); 
         console.log(tracks);
       });

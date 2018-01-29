@@ -1,8 +1,9 @@
 const sequelize = require('../models/config'),
+      authMiddleware  = require("../middlewares/auth"),
       Playlist     = require('../models/playlist');
 
 module.exports = app => {
-  app.get('/playlists', (req, res) => {
+  app.get('/playlists', authMiddleware.loginRequired, (req, res) => {
     sequelize.query(`
       SELECT * FROM Playlist
     `, 
@@ -12,7 +13,7 @@ module.exports = app => {
       //   console.log(results.toJSON);
       // });
       .then(playlists => {
-        res.render('playlists', {playlists});
+        res.render('playlists', {playlists, isLoggedIn: req.isAuthenticated()});
         console.log(playlists);
       });
   });
@@ -28,8 +29,7 @@ module.exports = app => {
     
     sequelize.query(SQL, {model: Playlist, raw: true})
       .then(tracks => {
-        res.render('album', {tracks, albumName: tracks[0].Album, title: tracks[0].Album}); 
-        console.log(tracks);
+        res.render('album', {tracks, albumName: tracks[0].Album, title: tracks[0].Album, isLoggedIn: req.isAuthenticated()}); 
       });
         
   });

@@ -8,7 +8,9 @@
     $.getJSON(`https://ws.audioscrobbler.com/2.0/?method=album.search&album=${album}&limit=1&api_key=4eb31b12a17ffea4b78d571a205b8d93&format=json`)
       .done(function( data ) {
         console.log(data.results.albummatches.album["0"]);
-        image.attr('src', data.results.albummatches.album["0"].image[3]["#text"]);
+        if( data.results.albummatches.album["0"].image[3]["#text"] ) {
+          image.attr('src', data.results.albummatches.album["0"].image[3]["#text"]);
+        }
 
         $.each( data, function( i, item ) {
           // console.log(item["2"]);
@@ -44,14 +46,38 @@
       });
   });
   
-  var singleArtist = $('.biography').data('artist');
+  const singleArtist = $('.biography').data('artist');
   $.getJSON(`https://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=${singleArtist}&api_key=4eb31b12a17ffea4b78d571a205b8d93&format=json`)
     .done(function( data ) {
       // console.log(data);
-      $('.biography').html(data.artist.bio.summary)
+      if( data.artist ) {
+        $('.biography').html(data.artist.bio.summary);
+      }
 
   });
 
+  const artistAlbums = [];
+  
+  $.getJSON(`https://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${singleArtist}&limit=12&api_key=4eb31b12a17ffea4b78d571a205b8d93&format=json`, data => {
+    // console.log(data);
+    if( data.topalbums ) {
+      $.each( data.topalbums.album, ( i, album ) => {
+        artistAlbums.push(`
+        <div class="col-4 col-md-2 m-0 p-0">
+          <!--<div class="card mb-4 box-shadow">-->
+            <img class="img-fluid" src="${album.image[3]["#text"]}" alt="Card image cap">
+            <div class="card-body d-none">
+              <h5>${album.name}</h5>
+            </div>
+          <!--</div>-->
+        </div>
+        `);
+      });      
+    }
+  }).done(data => $('.artist-albums').html(artistAlbums) );
+
+  
+  
   const topArtists = [];
   
   $.getJSON(`https://ws.audioscrobbler.com/2.0/?method=chart.gettopartists&limit=12&api_key=4eb31b12a17ffea4b78d571a205b8d93&format=json`, function(data) {
@@ -72,14 +98,7 @@
         </div>
         `);
       });
-  }).done(function( data ) {
-    // console.log(topArtists);
-    $('.top-artists').html(topArtists);      
-  });
-
-  
-  
-  
+  }).done(data => $('.top-artists').html(topArtists) );
   
   var albumPrice = 0;
   $('[scope=price]').each( function() {

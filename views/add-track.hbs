@@ -1,0 +1,27 @@
+
+<div class="bg-light py-5">
+  <form class="form-signin py-5" method="POST" action="/dashboard/tracks/add">
+    <div class="signup-header mb-5">
+      <h1 class="text-center mb-3">Add a new track</h1>
+      {{!--<p style="text-align: center;">Easily signup to AIM TV community and enjoy of multiple benefits we offer for our professionals.</p>--}}
+      {{!--<p style="text-align: center;"><strong>Already a member?</strong><a href="/signin/"> Sign in your account</a></p>--}}
+    </div>
+    
+    {{#if errorMessage}}
+      <div class="alert alert-danger">
+        {{errorMessage}}
+      </div>
+    {{/if}}
+    
+    <label for="trackName" class="sr-only">Track Name</label>
+    <input type="text" id="trackName" name="Name" class="form-control" placeholder="Track Name" reqssuired autofocus>
+
+    <label for="ArtistId" class="sr-only">Password</label>
+    <select id="ArtistId" name="ArtistId" class="form-control" required>
+      {{#each albums}}
+      <option value="{{AlbumId}}">{{Title}}</option>
+      {{/each}}
+    </select>
+    <button class="btn btn-lg btn-primary btn-block mt-5" type="submit">Publish track</button>
+  </form>
+</div>

@@ -17,12 +17,12 @@ module.exports = app => {
       //   console.log(results.toJSON);
       // });
       .then(albums => {
-        res.render('albums', {albums});
+        res.render('albums', {albums, isLoggedIn: req.isAuthenticated()});
         console.log(albums);
       });
   });
 
-  app.get('/albums/:id', (req, res) => {
+  app.get('/album/:id', (req, res) => {
     const SQL = `
       SELECT t.Name Track, t.UnitPrice Price, g.Name Genre, ar.Name Artist, a.Title Album FROM Track t
       INNER JOIN Album a USING(AlbumId)
@@ -33,8 +33,7 @@ module.exports = app => {
     
     sequelize.query(SQL, {model: Album, raw: true})
       .then(tracks => {
-        res.render('album', {tracks, albumName: tracks[0].Album, title: tracks[0].Album}); 
-        console.log(tracks);
+        res.render('album', {tracks, albumName: tracks[0].Album, title: tracks[0].Album, isLoggedIn: req.isAuthenticated()}); 
       });
         
   });

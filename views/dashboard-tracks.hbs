@@ -1,0 +1,57 @@
+<div class="nav-scroller bg-dark box-shadow">
+  <nav class="nav nav-underline justify-content-center">
+    <a class="nav-link text-white" href="/dashboard">Dashboard</a>
+    <a class="nav-link active" href="/dashboard/tracks">
+      Tracks
+      {{!--<span class="badge badge-pill bg-light align-text-bottom">0</span>--}}
+    </a>
+    <a class="nav-link" href="/dashboard/artists">Artists</a>
+    <a class="nav-link" href="/dashboard/albums">Albums</a>
+    <a class="nav-link" href="/dashboard/playlists">Playlists</a>
+    {{!--<a class="nav-link" href="#">Link</a>--}}
+    {{!--<a class="nav-link" href="#">Link</a>--}}
+    {{!--<a class="nav-link" href="#">Link</a>--}}
+    <a class="nav-link" href="/dashboard/profile">Profile</a>
+  </nav>
+</div>
+
+
+<section class="jumbotron text-center">
+  <div class="container">
+    <h1 class="jumbotron-heading">Your tracks</h1>
+    <p class="lead text-muted">From this panel you are able to create, read, update and delete your tracks.</p>
+    <p>
+      <a href="/dashboard/tracks/add" class="btn btn-primary my-2">Add a new track</a>
+      {{!--<a href="#" class="btn btn-secondary my-2">Secondary action</a>--}}
+    </p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Track</th>
+            <th scope="col">Artist</th>
+            <th scope="col">Album</th>
+            <th scope="col">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{# each tracks}}
+          <tr>
+            <th scope="row">1</th>
+            <td>{{TrackName}}</td>
+            <td>{{ArtistName}}</td>
+            <td>{{AlbumTitle}}</td>
+            <td scope="price">{{UnitPrice}}</td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
