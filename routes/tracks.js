@@ -8,6 +8,8 @@ module.exports = app => {
       FROM Track t
       INNER JOIN Album a USING(AlbumId)
       INNER JOIN Artist ar USING(ArtistId)
+      WHERE 1=1
+         AND t.Name LIKE '%${req.query.search ? req.query.search : ''}%'
       LIMIT 15
     `, 
     {model: Track, raw: true})
@@ -17,7 +19,7 @@ module.exports = app => {
       // });
       .then(tracks => {
         res.render('tracks', {tracks, isLoggedIn: req.isAuthenticated()});
-        console.log(tracks);
+        console.log(req.query.search);
       });
   });
 

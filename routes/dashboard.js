@@ -20,7 +20,7 @@ module.exports = app => {
       INNER JOIN Album a USING(AlbumId)
       INNER JOIN Artist ar USING(ArtistId)
       --WHERE createdBy = ${req.user.ID}
-      WHERE t.createdBy = 1
+      --ORDER BY TrackId DESC
       LIMIT 15
     `, 
     {model: Track, raw: true})
